@@ -1,0 +1,28 @@
+@startuml
+autonumber
+
+participant "browser" as browser
+participant "server" as server
+activate browser
+browser -> server : POST https://studies.cs.helsinki.fi/exampleapp/new_note
+activate server
+server --> browser : document
+deactivate server
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/notes
+activate server
+server --> browser : document
+deactivate server
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/main.css
+activate server
+server --> browser : stylesheet
+deactivate server
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/main.js
+activate server
+server --> browser : script
+deactivate server
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/data.json
+activate server
+server --> browser : data.json
+deactivate server
+deactivate browser
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+autonumber
+
+actor "USER" as usr 
+participant "SPA" as spa 
+participant "server" as server
+
+activate usr 
+usr -> spa : search https://studies.cs.helsinki.fi/exampleapp/spa
+activate spa
+spa -> server : GET https://studies.cs.helsinki.fi/exampleapp/spa
+activate server
+server --> spa : HTML-code
+deactivate server
+spa -> server : GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+activate server
+server --> spa : spa.js
+deactivate server
+spa -> server : GET https://studies.cs.helsinki.fi/exampleapp/data.json
+activate server
+server --> spa : data.json
+deactivate server
+spa --> usr : show spa
+deactivate spa 
+deactivate usr
+
+
+
+@enduml
